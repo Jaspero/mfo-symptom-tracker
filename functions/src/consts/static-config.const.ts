@@ -4,5 +4,5 @@ export const STATIC_CONFIG: {
   /**
    * Controls the region of each cloud function
    */
-  cloudRegion: 'us-central1',
+  cloudRegion: 'europe-west1',
 }

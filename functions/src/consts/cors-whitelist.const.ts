@@ -2,7 +2,7 @@ import * as cors from 'cors';
 
 export const CORS = cors({
   origin: [
-    'https://jaspero-jms.web.app',
+    'https://mfo-symptom-tracker.web.app',
     ...process.env.NODE_ENV !== 'production' ? ['http://localhost:4200'] : []
   ],
   optionsSuccessStatus: 200,

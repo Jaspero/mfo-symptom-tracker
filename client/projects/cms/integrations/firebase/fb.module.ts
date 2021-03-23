@@ -40,7 +40,7 @@ export class FirebaseModule {
         },
         {
           provide: REGION,
-          useValue: 'us-central1'
+          useValue: 'europe-west1'
         },
         {
           provide: ORIGIN,

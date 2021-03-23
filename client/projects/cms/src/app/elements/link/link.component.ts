@@ -1,5 +1,4 @@
-import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
-import {ThemePalette} from '@angular/material/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -17,7 +16,7 @@ export class LinkComponent {
   link: string;
 
   @Input()
-  color: ThemePalette;
+  icon: string;
 
   open() {
     this.router.navigateByUrl(this.link);

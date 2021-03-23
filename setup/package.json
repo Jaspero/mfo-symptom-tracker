@@ -2,8 +2,7 @@
   "name": "setup",
   "version": "1.0.0",
   "scripts": {
-    "start": "ts-node setup.ts",
-    "start:prod": "ts-node setup.ts p"
+    "start": "ts-node setup.ts"
   },
   "dependencies": {
     "firebase-admin": "9.4.1"

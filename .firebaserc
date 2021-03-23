@@ -1,9 +1,9 @@
 {
   "targets": {
-    "jaspero-jms": {
+    "mfo-symptom-tracker": {
       "hosting": {
         "cms": [
-          "jaspero-jms"
+          "mfo-symptom-tracker"
         ]
       }
     }

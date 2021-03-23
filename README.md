@@ -15,7 +15,7 @@ Currently it only supports [firestore](https://firebase.google.com/docs/firestor
 back-end but other implementations are planed and instructions for writing your own integration can
 be found [here](https://github.com/Jaspero/jms/wiki/Custom-Integrations)
 
-A live example can be found [here](https://jaspero-jms.web.app/).
+A live example can be found [here](https://mfo-symptom-tracker.web.app/).
 
 For more information consult our wiki [here](https://github.com/Jaspero/jms/wiki).
 

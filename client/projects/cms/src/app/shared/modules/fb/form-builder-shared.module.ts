@@ -11,6 +11,7 @@ import {
   STORAGE_URL,
   StorageService
 } from '@jaspero/form-builder';
+import {FormUiModule} from '@jaspero/fb-form-ui';
 import {TranslocoModule} from '@ngneat/transloco';
 import {environment} from '../../../../environments/environment';
 import {DbService} from '../../services/db/db.service';
@@ -25,6 +26,7 @@ export function roleFactory(state: StateService) {
   imports: [
     CommonModule,
     FormBuilderModule.forRoot(),
+    FormUiModule,
 
     /**
      * Custom fields and component dependencies

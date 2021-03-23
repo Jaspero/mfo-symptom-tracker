@@ -8,9 +8,9 @@ export const ROLES_COLLECTION = {
       createdOn: Date.now()
     },
     {
-      id: 'user',
-      name: 'User',
-      description: 'A user with limited application access',
+      id: 'subject',
+      name: 'Subject',
+      description: 'A user with access to researches',
       createdOn: Date.now()
     }
   ]

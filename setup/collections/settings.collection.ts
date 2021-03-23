@@ -4,22 +4,8 @@ export const SETTINGS_COLLECTION = {
     {
       id: 'user',
       roles: [
-
-        /**
-         * List all users that should be created initially.
-         * Initially created users can only login through
-         * third party provides (google, facebook...).
-         * If you want to create a user with email/password
-         * add an account for him in Authentication in the
-         * firebase dashboard.
-         */
         {
-          email: 'test@test.com',
-          role: 'user'
-        },
-
-        {
-          email: 'info@jaspero.co',
+          email: 'marija.heffer@gmail.com',
           role: 'admin'
         }
       ]
@@ -33,6 +19,12 @@ export const SETTINGS_COLLECTION = {
             label: 'LAYOUT.DASHBOARD',
             type: 'link',
             value: '/dashboard'
+          },
+          {
+            icon: 'science',
+            label: 'Istraživanja',
+            type: 'link',
+            value: '/m/researches/overview'
           },
           {
             children: [
@@ -51,25 +43,6 @@ export const SETTINGS_COLLECTION = {
             ],
             icon: 'account_box',
             label: 'LAYOUT.MANAGEMENT',
-            type: 'expandable'
-          },
-          {
-            children: [
-              {
-                icon: 'view_module',
-                label: 'LAYOUT.MODULES',
-                type: 'link',
-                value: '/module-definition/overview'
-              },
-              {
-                icon: 'settings',
-                label: 'LAYOUT.SETTINGS',
-                type: 'link',
-                value: '/settings'
-              }
-            ],
-            icon: 'dns',
-            label: 'LAYOUT.SYSTEM',
             type: 'expandable'
           }
         ]
