@@ -1,1 +1,35 @@
-<p>login works!</p>
+<mat-card>
+  <form [formGroup]="form">
+
+    <h2 class="ta-center">MFA Simptom Tracker</h2>
+
+    <mat-form-field class="w-full">
+      <mat-label>Istraživanje</mat-label>
+      <mat-select formControlName="research">
+        <mat-option *ngFor="let research of researches" [value]="research.id">
+          {{research.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Identifikator</mat-label>
+      <input matInput formControlName="id"/>
+      <span matPrefix *ngIf="research.value">{{prefixes[research.value]}}</span>
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Lozinka</mat-label>
+      <input type="password" matInput formControlName="password">
+    </mat-form-field>
+
+    <div class="ta-center">
+      <button
+        mat-stroked-button
+        [disabled]="form.invalid"
+        [jpLoadClick]="login()">
+        Prijava
+      </button>
+    </div>
+  </form>
+</mat-card>

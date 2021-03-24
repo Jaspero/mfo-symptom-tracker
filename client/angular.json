@@ -219,6 +219,7 @@
               "projects/web/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/web/src/styles.scss"
             ],
             "scripts": []
@@ -256,7 +257,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "web:build"
+            "browserTarget": "web:build",
+            "port": 5000
           },
           "configurations": {
             "production": {

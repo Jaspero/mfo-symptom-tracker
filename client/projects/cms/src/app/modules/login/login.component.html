@@ -2,29 +2,6 @@
   <div class="col-4 col-m-6 col-s-9 col-xs-12">
     <mat-card>
       <h6 class="m-b-l p-t-m ta-center">{{staticConfig.displayName}}</h6>
-      <!--Social login-->
-      <section>
-        <div class="m-b-s">
-          <button class="w-full" mat-stroked-button (click)="loginGoogle()">
-            {{'LOGIN.LOGIN_WITH' | transloco:{value: 'Google'} }}
-          </button>
-        </div>
-      </section>
-
-      <section>
-        <div class="m-b-s">
-          <button class="w-full" mat-stroked-button (click)="loginFacebook()">
-            {{'LOGIN.LOGIN_WITH' | transloco:{value: 'Facebook'} }}
-          </button>
-        </div>
-      </section>
-
-      <!--Divider-->
-      <div class="flex ai-center m-y-m disabled">
-        <hr class="flex1">
-        <p class="p-x-s">{{'GENERAL.OR' | transloco}}</p>
-        <hr class="flex1">
-      </div>
 
       <!--Regular login-->
       <form [formGroup]="loginForm">

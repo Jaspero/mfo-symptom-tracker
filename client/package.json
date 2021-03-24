@@ -43,6 +43,7 @@
     "zone.js": "0.11.4"
   },
   "devDependencies": {
+    "@angular-devkit/architect": ">= 0.900 < 0.1200",
     "@angular-devkit/build-angular": "0.1102.5",
     "@angular/cli": "11.2.5",
     "@angular/compiler-cli": "11.2.7",
@@ -54,6 +55,10 @@
     "@types/jsoneditor": "8.6.0",
     "@types/node": "14.14.35",
     "codelyzer": "6.0.1",
+    "firebase-tools": "^8.0.0",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "3.7.1",
     "jasmine-spec-reporter": "6.0.0",
     "karma": "6.3.0",
@@ -61,16 +66,11 @@
     "karma-coverage-istanbul-reporter": "3.0.3",
     "karma-jasmine": "4.0.1",
     "karma-jasmine-html-reporter": "1.5.4",
+    "open": "^7.0.3",
     "protractor": "7.0.0",
     "replace-in-file": "6.2.0",
     "ts-node": "9.1.1",
     "tslint": "6.1.3",
-    "typescript": "4.1.5",
-    "@angular-devkit/architect": ">= 0.900 < 0.1200",
-    "firebase-tools": "^8.0.0",
-    "fuzzy": "^0.1.3",
-    "inquirer": "^6.2.2",
-    "inquirer-autocomplete-prompt": "^1.0.1",
-    "open": "^7.0.3"
+    "typescript": "4.1.5"
   }
 }
