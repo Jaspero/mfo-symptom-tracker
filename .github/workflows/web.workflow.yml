@@ -1,0 +1,28 @@
+name: Deploy CMS
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'client/projects/web/**/*'
+      - '.github/workflows/web.workflow.yml'
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: |
+          npm --prefix client ci
+      - name: Build
+        run: npm run build:web
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:web
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: 'mfo-symptom-tracker'

@@ -3,6 +3,9 @@
     "mfo-symptom-tracker": {
       "hosting": {
         "cms": [
+          "mfo-symptom-tracker-cms"
+        ],
+        "web": [
           "mfo-symptom-tracker"
         ]
       }
