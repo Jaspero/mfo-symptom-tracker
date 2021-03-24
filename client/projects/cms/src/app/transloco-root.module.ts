@@ -26,11 +26,11 @@ export class TranslocoHttpLoader implements TranslocoLoader {
       provide: TRANSLOCO_CONFIG,
       useValue: translocoConfig({
         availableLangs: [{
-          id: 'en',
-          label: 'English'
+          id: 'hr',
+          label: 'Hrvatski'
         }],
-        defaultLang: 'en',
-        fallbackLang: 'en',
+        defaultLang: 'hr',
+        fallbackLang: 'hr',
         reRenderOnLangChange: true,
         prodMode: environment.production,
         missingHandler: {

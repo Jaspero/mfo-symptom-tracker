@@ -43,7 +43,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       });
 
-    this.afs.collection('researches')
+    this.afs.collection(
+      'researches',
+      ref => ref
+        .where('active', '==', true)
+    )
       .get()
       .pipe(
         snapshotsMap<Research>()

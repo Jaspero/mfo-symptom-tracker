@@ -7,6 +7,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {RouterModule, Routes} from '@angular/router';
+import {LoadClickModule} from '@jaspero/ng-helpers';
 import {RegisterComponent} from './register.component';
 
 const routes: Routes = [{
@@ -25,7 +26,9 @@ const routes: Routes = [{
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+
+    LoadClickModule
   ]
 })
 export class RegisterModule { }

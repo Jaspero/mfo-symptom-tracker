@@ -30,7 +30,7 @@ export const researchCreated = functions
 
 
     while (uniqueIds.size < data.participants) {
-      uniqueIds.add(randomId());
+      uniqueIds.add(data.prefix + '-' + randomId());
     }
 
     await Promise.all(

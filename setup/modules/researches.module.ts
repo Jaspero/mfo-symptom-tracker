@@ -45,10 +45,10 @@ export const RESEARCHES_MODULE = {
       ],
       actions: [
         {
-          value: `v => '<jms-e-link link="/m/researches/{{it.id}}/subjects/overview" icon="people">Subjekti</jms-e-link>'`
+          value: `v => '<jms-e-link link="/m/researches/{{v.id}}/subjects/overview" icon="people">Subjekti</jms-e-link>'`
         },
         {
-          value: `v => '<jms-e-link link="/m/forms/{{it.id}}/questionnaires/overview" icon="feed">Upitnici</jms-e-link>'`
+          value: `v => '<jms-e-link link="/m/researches/{{v.id}}/questionnaires/overview" icon="feed">Upitnici</jms-e-link>'`
         }
       ]
     }
@@ -59,6 +59,7 @@ export const RESEARCHES_MODULE = {
       name: {type: 'string'},
       description: {type: 'string'},
       participants: {type: 'number'},
+      prefix: {type: 'string'},
       active: {type: 'boolean'},
       ...CREATED_ON.property
     },
@@ -70,7 +71,12 @@ export const RESEARCHES_MODULE = {
   },
   definitions: {
     name: {label: 'Ime'},
-    description: {label: 'Opis'},
+    description: {
+      label: 'Opis',
+      component: {
+        type: 'textarea'
+      }
+    },
     participants: {label: 'Broj Ispitanika'},
     prefix: {label: 'Prefix'},
     active: {label: 'Aktivno'},
