@@ -14,7 +14,7 @@ import {Role} from '../../../../../../shared/interfaces/role.interface';
 import {DbService} from '../../../../../../shared/services/db/db.service';
 import {StateService} from '../../../../../../shared/services/state/state.service';
 import {confirmation} from '../../../../../../shared/utils/confirmation';
-import {notify} from '../../../../../../shared/utils/notify.operator';
+import {notify} from '../../../../../../../../../shared/utils/notify.operator';
 import {SchemaValidation} from '../../../../../../shared/utils/schema-validation';
 import {SnippetDialogComponent} from '../../components/snippet-dialog/snippet-dialog.component';
 import {DEFINITION_AUTOCOMPLETE} from './consts/definition-autocomplete.const';

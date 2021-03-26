@@ -13,7 +13,7 @@ import {Settings} from '../../../../shared/interfaces/settings.interface';
 import {User} from '../../../../shared/interfaces/user.interface';
 import {DbService} from '../../../../shared/services/db/db.service';
 import {StateService} from '../../../../shared/services/state/state.service';
-import {notify} from '../../../../shared/utils/notify.operator';
+import {notify} from '../../../../../../../shared/utils/notify.operator';
 import {randomPassword} from '../../../../shared/utils/random-password';
 
 @UntilDestroy()

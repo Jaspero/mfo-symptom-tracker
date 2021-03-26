@@ -5,8 +5,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {from} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {STATIC_CONFIG} from '../../../environments/static-config';
-import {notify} from '../../shared/utils/notify.operator';
-import {RepeatPasswordValidator} from '../../shared/validators/repeat-password.validator';
+import {notify} from '../../../../../shared/utils/notify.operator';
+import {RepeatPasswordValidator} from '../../../../../shared/validators/repeat-password.validator';
 
 @Component({
   selector: 'jms-reset-password',

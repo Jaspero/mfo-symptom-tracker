@@ -6,7 +6,7 @@ import {map, take, tap} from 'rxjs/operators';
 import {FirestoreCollection} from '../../../../../../../../integrations/firebase/firestore-collection.enum';
 import {DbService} from '../../../../../../shared/services/db/db.service';
 import {StateService} from '../../../../../../shared/services/state/state.service';
-import {notify} from '../../../../../../shared/utils/notify.operator';
+import {notify} from '../../../../../../../../../shared/utils/notify.operator';
 
 @Component({
   selector: 'jms-layout-settings',

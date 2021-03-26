@@ -9,8 +9,8 @@ import {FirestoreCollection} from '../../../../../../../../integrations/firebase
 import {DbService} from '../../../../../../shared/services/db/db.service';
 import {StateService} from '../../../../../../shared/services/state/state.service';
 import {confirmation} from '../../../../../../shared/utils/confirmation';
-import {notify} from '../../../../../../shared/utils/notify.operator';
-import {RepeatPasswordValidator} from '../../../../../../shared/validators/repeat-password.validator';
+import {notify} from '../../../../../../../../../shared/utils/notify.operator';
+import {RepeatPasswordValidator} from '../../../../../../../../../shared/validators/repeat-password.validator';
 
 @Component({
   selector: 'jms-profile-security',

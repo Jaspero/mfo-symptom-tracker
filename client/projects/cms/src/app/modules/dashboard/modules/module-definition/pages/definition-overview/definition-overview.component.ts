@@ -17,7 +17,7 @@ import {RouteData} from '../../../../../../shared/interfaces/route-data.interfac
 import {DbService} from '../../../../../../shared/services/db/db.service';
 import {StateService} from '../../../../../../shared/services/state/state.service';
 import {confirmation} from '../../../../../../shared/utils/confirmation';
-import {notify} from '../../../../../../shared/utils/notify.operator';
+import {notify} from '../../../../../../../../../shared/utils/notify.operator';
 import {queue} from '../../../../../../shared/utils/queue.operator';
 import {DEFAULT_DEFINITION_VALUE} from '../definition-instance/consts/default-definition-value.const';
 import {DEFAULT_LAYOUT_VALUE} from '../definition-instance/consts/default-layout-value.const';

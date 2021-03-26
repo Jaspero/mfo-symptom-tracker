@@ -1,8 +1,32 @@
 .decorator {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 50%;
   background: var(--primary-theme);
+}
+
+.logo {
+  width: 300px;
+  margin: 2rem 0;
+}
+
+section {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  mat-card {
+    max-width: 500px;
+  }
+}
+
+::ng-deep {
+  .mat-form-field-prefix {
+    top: 0 !important;
+  }
 }

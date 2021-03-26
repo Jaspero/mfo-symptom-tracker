@@ -22,15 +22,26 @@ export function notify(
   };
 
   const snackBar: MatSnackBar = (window as any).rootInjector.get(MatSnackBar);
-  const transloco: TranslocoService = (window as any).rootInjector.get(TranslocoService);
+
+  let transloco: any;
+
+  try {
+    transloco = (window as any).rootInjector.get(TranslocoService);
+  } catch (e) {}
+
+  const getValue = (val: string) => {
+    return transloco ? transloco.translate(val) : {
+      'GENERAL.DISMISS': 'Ukloni',
+    }[val] || val;
+  };
 
   return <T>(source$: Observable<T>) => {
     return source$.pipe(
       tap(() => {
         if (finalOptions.success) {
           snackBar.open(
-            transloco.translate(finalOptions.success as string),
-            transloco.translate('GENERAL.DISMISS'),
+            getValue(finalOptions.success as string),
+            getValue('GENERAL.DISMISS'),
             {
               duration: 5000
             }
@@ -41,8 +52,8 @@ export function notify(
         if (finalOptions.error || finalOptions.showThrownError) {
           snackBar.open(
             finalOptions.showThrownError && (err || err.message) ?
-              (err || err.message) : transloco.translate(err?.message || finalOptions.error as string),
-            transloco.translate('GENERAL.DISMISS'),
+              (err || err.message) : getValue(err?.message || finalOptions.error as string),
+            getValue('GENERAL.DISMISS'),
             {
               panelClass: 'snack-bar-error',
               duration: 5000

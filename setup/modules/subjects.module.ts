@@ -6,7 +6,6 @@ export const SUBJECTS_MODULE = {
     write: ['admin']
   },
   layout: {
-    editTitleKey: 'name',
     instance: {
       segments: [{
         fields: [
@@ -27,7 +26,19 @@ export const SUBJECTS_MODULE = {
         },
         {
           key: '/assigned',
-          label: 'Assigned'
+          label: 'Dodijeljen',
+          pipe: ['custom'],
+          pipeArguments: {
+            0: `v => v ? 'Da' : 'Ne'`
+          }
+        },
+        {
+          key: '/terms',
+          label: 'Privola',
+          pipe: ['custom'],
+          pipeArguments: {
+            0: `v => v ? 'Da' : 'Ne'`
+          }
         }
       ]
     },
@@ -60,7 +71,9 @@ export const SUBJECTS_MODULE = {
     properties: {
       id: {type: 'string'},
       assigned: {type: 'boolean'},
-      password: {type: 'string'}
+      assignedOn: {type: 'number'},
+      termsAccepted: {type: 'boolean'},
+      termsAcceptedOn: {type: 'number'}
     }
   },
   definitions: {

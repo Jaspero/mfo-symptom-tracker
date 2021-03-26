@@ -1,11 +1,14 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {AngularFireFunctions} from '@angular/fire/functions';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import {UntilDestroy} from '@ngneat/until-destroy';
+import {filter, switchMap} from 'rxjs/operators';
 import {Research} from '../../../../../shared/interfaces/research.interface';
 import {snapshotsMap} from '../../../../../shared/utils/snapshots-map.operator';
+import {RepeatPasswordValidator} from '../../../../../shared/validators/repeat-password.validator';
+import {AfFunctionService} from '../../services/af-function.service';
 
 @UntilDestroy({checkProperties: true})
 @Component({
@@ -18,9 +21,10 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private afs: AngularFirestore,
-    private aff: AngularFireFunctions,
     private afa: AngularFireAuth,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private aff: AfFunctionService,
+    private router: Router
   ) { }
 
   form: FormGroup;
@@ -32,17 +36,31 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.afa.user
+      .pipe(
+        filter(user => !!user)
+      )
+      .subscribe(() => {
+        this.router.navigate(['/dashboard']);
+      });
+
     this.form = this.fb.group({
       research: ['', Validators.required],
       id: ['', Validators.required],
-      password: ['', Validators.required],
-      repeatPassword: ['', Validators.required]
+      pg: this.fb.group({
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        repeatPassword: ['', Validators.required]
+      }, {
+        validators: RepeatPasswordValidator('Lozinke se ne podudaraju')
+      }),
     });
 
     this.afs.collection(
       'researches',
       ref => ref
         .where('active', '==', true)
+        .orderBy('createdOn', 'desc')
     )
       .get()
       .pipe(
@@ -62,6 +80,20 @@ export class RegisterComponent implements OnInit {
   register() {
     return () => {
 
+      const {pg, ...data} = this.form.getRawValue();
+
+      return this.aff.callFunction(
+        'cms-signUp',
+        {...data, password: pg.password},
+        'Registracija završena uspješno.'
+      )
+        .pipe(
+          switchMap(token => {
+            console.log(token);
+
+            return this.afa.signInWithCustomToken(token);
+          })
+        );
     };
   }
 }

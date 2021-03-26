@@ -16,7 +16,8 @@ export const RESEARCHES_MODULE = {
             '/name',
             '/prefix',
             '/description',
-            '/participants'
+            '/participants',
+            '/terms'
           ]
         }
       ]

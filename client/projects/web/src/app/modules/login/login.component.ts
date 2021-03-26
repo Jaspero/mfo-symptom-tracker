@@ -1,13 +1,13 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {AngularFireFunctions} from '@angular/fire/functions';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UntilDestroy} from '@ngneat/until-destroy';
-import {filter} from 'rxjs/operators';
+import {filter, switchMap} from 'rxjs/operators';
 import {Research} from '../../../../../shared/interfaces/research.interface';
 import {snapshotsMap} from '../../../../../shared/utils/snapshots-map.operator';
+import {AfFunctionService} from '../../services/af-function.service';
 
 @UntilDestroy({checkProperties: true})
 @Component({
@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private afs: AngularFirestore,
     private afa: AngularFireAuth,
-    public aff: AngularFireFunctions,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private aff: AfFunctionService
   ) { }
 
   form: FormGroup;
@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       'researches',
       ref => ref
         .where('active', '==', true)
+        .orderBy('createdOn', 'desc')
     )
       .get()
       .pipe(
@@ -70,8 +71,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    return () => {
-
-    };
+    return () =>
+      this.aff.callFunction('cms-login', this.form.getRawValue())
+        .pipe(
+          switchMap(token =>
+            this.afa.signInWithCustomToken(token)
+          )
+        );
   }
 }

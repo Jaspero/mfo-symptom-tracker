@@ -16,8 +16,8 @@
     "lint": "npm run lint:client && npm run lint:functions",
     "firebase": "firebase",
     "deploy": "firebase deploy --only storage,firestore,functions:cms,hosting",
-    "semantic-release": "semantic-release",
-    "config:set": "firebase functions:config:set"
+    "config:set": "firebase functions:config:set",
+    "write:indexes": "firebase firestore:indexes > firestore.indexes.json"
   },
   "author": {
     "name": "Jaspero Ltd",

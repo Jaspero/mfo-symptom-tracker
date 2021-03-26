@@ -6,4 +6,5 @@ export interface Research {
   active: boolean;
   createdOn: number;
   description?: string;
+  terms?: string;
 }

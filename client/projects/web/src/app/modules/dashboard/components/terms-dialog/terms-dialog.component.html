@@ -1,0 +1,5 @@
+<h4 mat-dialog-title>Privola</h4>
+<mat-dialog-content>
+  <div [innerHTML]="state.research.terms | jpSanitize"></div>
+  <button mat-stroked-button [jpLoadClick]="accept()">Prihvati</button>
+</mat-dialog-content>
