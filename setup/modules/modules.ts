@@ -1,3 +1,4 @@
+import {ANNOUNCEMENTS_MODULE} from './announcements.module';
 import {QUESTIONNAIRES_MODULE} from './questionnaires.module';
 import {RESEARCHES_MODULE} from './researches.module';
 import {ROLES_MODULE} from './roles.module';
@@ -12,5 +13,6 @@ export const MODULES = [
   ROLES_MODULE,
   RESEARCHES_MODULE,
   SUBJECTS_MODULE,
-  QUESTIONNAIRES_MODULE
+  QUESTIONNAIRES_MODULE,
+  ANNOUNCEMENTS_MODULE
 ];

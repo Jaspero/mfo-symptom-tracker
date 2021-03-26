@@ -7,7 +7,19 @@ export const SUBJECTS_MODULE = {
   },
   layout: {
     editTitleKey: 'name',
+    instance: {
+      segments: [{
+        fields: [
+          '/id',
+          '/assigned'
+        ]
+      }]
+    },
+    overview: {
+      toolbar: []
+    },
     table: {
+      hideImport: true,
       tableColumns: [
         {
           key: '/id',
@@ -47,7 +59,8 @@ export const SUBJECTS_MODULE = {
   schema: {
     properties: {
       id: {type: 'string'},
-      assigned: {type: 'boolean'}
+      assigned: {type: 'boolean'},
+      password: {type: 'string'}
     }
   },
   definitions: {

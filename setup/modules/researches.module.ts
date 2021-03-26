@@ -22,24 +22,25 @@ export const RESEARCHES_MODULE = {
       ]
     },
     table: {
+      hideImport: true,
       tableColumns: [
         CREATED_ON.column(),
         {
           key: '/name',
-          label: 'Name'
+          label: 'Ime'
         },
         {
           key: '/prefix',
-          label: 'Prefix'
+          label: 'Prefiks'
         },
         {
           key: '/participants',
-          label: 'Participants',
+          label: 'Broj Ispitanika',
           pipe: ['number']
         },
         {
           key: '/active',
-          label: 'Active',
+          label: 'Aktivno',
           control: true
         }
       ],
@@ -49,6 +50,9 @@ export const RESEARCHES_MODULE = {
         },
         {
           value: `v => '<jms-e-link link="/m/researches/{{v.id}}/questionnaires/overview" icon="feed">Upitnici</jms-e-link>'`
+        },
+        {
+          value: `v => '<jms-e-link link="/m/researches/{{v.id}}/announcements/overview" icon="campaign">Objave</jms-e-link>'`
         }
       ]
     }
@@ -60,6 +64,7 @@ export const RESEARCHES_MODULE = {
       description: {type: 'string'},
       participants: {type: 'number'},
       prefix: {type: 'string'},
+      terms: {type: 'string'},
       active: {type: 'boolean'},
       ...CREATED_ON.property
     },
@@ -75,6 +80,12 @@ export const RESEARCHES_MODULE = {
       label: 'Opis',
       component: {
         type: 'textarea'
+      }
+    },
+    terms: {
+      label: 'Privola',
+      component: {
+        type: 'fb-tinymce'
       }
     },
     participants: {label: 'Broj Ispitanika'},

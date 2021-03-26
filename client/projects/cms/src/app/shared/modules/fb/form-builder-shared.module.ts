@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {TinymceModule} from '@jaspero/fb-tinymce';
 import {
   CUSTOM_COMPONENTS,
   DbService as FDbService,
@@ -27,6 +28,7 @@ export function roleFactory(state: StateService) {
     CommonModule,
     FormBuilderModule.forRoot(),
     FormUiModule,
+    TinymceModule,
 
     /**
      * Custom fields and component dependencies

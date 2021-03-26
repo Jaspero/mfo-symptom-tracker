@@ -12,13 +12,13 @@
 
 $colors-themes: (
   primary: (
-    theme    : #3f51b5,
+    theme    : rgba(34, 127, 187, 1),
     primary  : rgba(255,255,255,1),
     secondary: rgba(255,255,255,.8),
     tertiary : rgba(255,255,255,.15),
   ),
   accent: (
-    theme    : #ff4081,
+    theme    : rgba(233, 75, 53, 1),
     primary  : rgba(255,255,255,1),
     secondary: rgba(255,255,255,.8),
     tertiary : rgba(255,255,255,.15),
