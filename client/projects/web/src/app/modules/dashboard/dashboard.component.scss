@@ -1,3 +1,5 @@
+@import "../../../scss/breakpoints";
+
 mat-toolbar {
   justify-content: space-between;
 }
@@ -15,4 +17,39 @@ mat-toolbar {
 main {
   max-width: 1200px;
   margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: $screen-s) {
+  mat-toolbar {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    vertical-align: bottom;
+
+    a {
+      font-size: 12px;
+      margin-right: 0.5rem !important;
+    }
+
+    ::ng-deep {
+      .mat-icon-button {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        vertical-align: middle;
+
+        .mat-icon {
+          margin-top: -5px;
+        }
+      }
+    }
+  }
+
+  main {
+    margin: 0;
+    padding: 1rem;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
 }

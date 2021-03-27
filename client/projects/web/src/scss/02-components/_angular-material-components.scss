@@ -188,6 +188,7 @@ tr.mat-row.mat-row {
       content: attr(data-label);
       text-align: left;
       order: 2;
+      font-weight: bold;
     }
 
     &:after {

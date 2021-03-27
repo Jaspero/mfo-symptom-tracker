@@ -1,12 +1,12 @@
 <mat-card>
-  <div class="add-symptom">
-    <div class="add-symptom-description">
+  <div class="grid">
+    <div class="col-9 col-m-8 col-s-12">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis ducimus maiores, non optio quaerat quidem quod suscipit vitae? Autem deleniti, ducimus est fuga molestiae necessitatibus quod soluta ullam vero! Qui?
       </p>
       <p class="m-t-s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A debitis est et explicabo numquam perferendis perspiciatis quaerat recusandae rem, repellat repellendus reprehenderit ut voluptas? Doloribus dolorum odit optio reprehenderit veniam!</p>
     </div>
-    <div class="add-symptom-button">
+    <div class="col-3 col-m-4 col-s-12 ta-center">
       <button mat-stroked-button color="primary" (click)="add()">Prijavi Simptom</button>
     </div>
   </div>
@@ -16,23 +16,23 @@
   <table mat-table [dataSource]="symptoms">
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef>Tip Simptoma</th>
-      <td mat-cell *matCellDef="let element">{{element.data.type}}</td>
+      <td mat-cell *matCellDef="let element" data-label="Tip Simptoma">{{element.data.type}}</td>
     </ng-container>
     <ng-container matColumnDef="createdOn">
       <th mat-header-cell *matHeaderCellDef>Početak</th>
-      <td mat-cell *matCellDef="let element">{{element.data.createdOn | date:'dd/MM/yy HH:mm'}}</td>
+      <td mat-cell *matCellDef="let element" data-label="Početak">{{element.data.createdOn | date:'dd/MM/yy HH:mm'}}</td>
     </ng-container>
     <ng-container matColumnDef="endedOn">
       <th mat-header-cell *matHeaderCellDef>Kraj</th>
-      <td mat-cell *matCellDef="let element">{{element.data.endedOn | date:'dd/MM/yy HH:mm'}}</td>
+      <td mat-cell *matCellDef="let element" data-label="Kraj">{{element.data.endedOn | date:'dd/MM/yy HH:mm'}}</td>
     </ng-container>
     <ng-container matColumnDef="intensity">
-      <th mat-header-cell *matHeaderCellDef> Intenzitet </th>
-      <td mat-cell *matCellDef="let element">{{element.data.intensity}}</td>
+      <th mat-header-cell *matHeaderCellDef>Intenzitet</th>
+      <td mat-cell *matCellDef="let element" data-label="Intenziter">{{element.data.intensity}}</td>
     </ng-container>
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Akcije</th>
-      <td mat-cell *matCellDef="let element; index as index;">
+      <td mat-cell *matCellDef="let element; index as index;" data-label="Akcije">
         <button mat-icon-button matTooltip="Uredi" (click)="edit(element, index)">
           <mat-icon>edit</mat-icon>
         </button>
