@@ -2,6 +2,6 @@
 <mat-dialog-content>
   <div [innerHTML]="state.research.terms | jpSanitize"></div>
 </mat-dialog-content>
-<mat-dialog-actions>
+<mat-dialog-actions *ngIf="!hideButton">
   <button mat-stroked-button [jpLoadClick]="accept()">Prihvati</button>
 </mat-dialog-actions>

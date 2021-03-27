@@ -1,1 +1,51 @@
-<p>symptoms works!</p>
+<mat-card>
+  <div class="add-symptom">
+    <div class="add-symptom-description">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis ducimus maiores, non optio quaerat quidem quod suscipit vitae? Autem deleniti, ducimus est fuga molestiae necessitatibus quod soluta ullam vero! Qui?
+      </p>
+      <p class="m-t-s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A debitis est et explicabo numquam perferendis perspiciatis quaerat recusandae rem, repellat repellendus reprehenderit ut voluptas? Doloribus dolorum odit optio reprehenderit veniam!</p>
+    </div>
+    <div class="add-symptom-button">
+      <button mat-stroked-button color="primary" (click)="add()">Prijavi Simptom</button>
+    </div>
+  </div>
+</mat-card>
+
+<mat-card class="m-t-m">
+  <table mat-table [dataSource]="symptoms">
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Tip Simptoma</th>
+      <td mat-cell *matCellDef="let element">{{element.data.type}}</td>
+    </ng-container>
+    <ng-container matColumnDef="createdOn">
+      <th mat-header-cell *matHeaderCellDef>Početak</th>
+      <td mat-cell *matCellDef="let element">{{element.data.createdOn | date:'dd/MM/yy HH:mm'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="endedOn">
+      <th mat-header-cell *matHeaderCellDef>Kraj</th>
+      <td mat-cell *matCellDef="let element">{{element.data.endedOn | date:'dd/MM/yy HH:mm'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="intensity">
+      <th mat-header-cell *matHeaderCellDef> Intenzitet </th>
+      <td mat-cell *matCellDef="let element">{{element.data.intensity}}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Akcije</th>
+      <td mat-cell *matCellDef="let element; index as index;">
+        <button mat-icon-button (click)="edit(element, index)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="delete(element.ref, index)">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+  </table>
+
+  <p class="m-y-s p-a-m ta-center" *ngIf="symptoms && !symptoms.length">
+    Trenutno nemate prijavljenih simptoma.
+  </p>
+</mat-card>

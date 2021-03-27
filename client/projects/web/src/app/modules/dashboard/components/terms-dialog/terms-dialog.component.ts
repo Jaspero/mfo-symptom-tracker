@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {from} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {StateService} from '../../../../services/state.service';
@@ -13,6 +13,8 @@ import {StateService} from '../../../../services/state.service';
 export class TermsDialogComponent {
   constructor(
     public state: StateService,
+    @Inject(MAT_DIALOG_DATA)
+    public hideButton: boolean,
     private dialogRef: MatDialogRef<TermsDialogComponent>
   ) { }
 

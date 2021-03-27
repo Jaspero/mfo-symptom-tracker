@@ -21,14 +21,21 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     if (!this.state.subject.termsAccepted && this.state.research.terms) {
-      this.dialog.open(
-        TermsDialogComponent,
-        {
-          width: '800px',
-          disableClose: true
-        }
-      );
+      this.openTerms();
     }
+  }
+
+  openTerms(hideButton = false) {
+    this.dialog.open(
+      TermsDialogComponent,
+      {
+        width: '800px',
+        disableClose: !hideButton,
+        data: {
+          hideButton
+        }
+      }
+    );
   }
 
   logOut() {

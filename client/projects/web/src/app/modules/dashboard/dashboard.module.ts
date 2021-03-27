@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
+import {MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
@@ -61,6 +62,8 @@ const routes: Routes = [
     LoadClickModule,
     SanitizeModule
   ],
-  providers: [DashboardResolver]
+  providers: [
+    DashboardResolver
+  ]
 })
 export class DashboardModule { }

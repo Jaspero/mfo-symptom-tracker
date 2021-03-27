@@ -1,0 +1,9 @@
+.add-symptom {
+  display: flex;
+  align-items: center;
+
+  &-button {
+    min-width: 200px;
+    text-align: center;
+  }
+}

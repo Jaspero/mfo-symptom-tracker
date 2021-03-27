@@ -1,0 +1,12 @@
+<h4 mat-dialog-title>Obriši Simptom</h4>
+
+<mat-dialog-content>
+  <p>Jeste li sigurni da želite obrisati ovaj simptom?</p>
+  <p>Ova radnja je trajna. Simptom će biti trajno obrisan.</p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-stroked-button (click)="dialogRef.close()">Odustani</button>
+  &nbsp;
+  <button mat-stroked-button color="warn" [jpLoadClick]="delete()">Obriši</button>
+</mat-dialog-actions>

@@ -33,6 +33,8 @@ export class DashboardResolver implements Resolve<{research: Research, subject: 
                   ...docs[0].data() as Research
                 };
 
+                this.state.researchRef = docs[0].ref as DocumentReference<Research>;
+
                 return docs[0].ref.collection('subjects').doc(user.uid).get();
               }),
               map(doc => {

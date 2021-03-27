@@ -1,6 +1,20 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
 import {RouterModule, Routes} from '@angular/router';
+import {LoadClickModule} from '@jaspero/ng-helpers';
+import {MatDatepickerModule, MatNativeDateModule} from '@matheo/datepicker';
+import {DeleteSymptomDialogComponent} from './components/delete-symptom-dialog/delete-symptom-dialog.component';
+import {EditSymptomDialogComponent} from './components/edit-symptom-dialog/edit-symptom-dialog.component';
 import {SymptomsComponent} from './symptoms.component';
 
 const routes: Routes = [{
@@ -9,10 +23,27 @@ const routes: Routes = [{
 }];
 
 @NgModule({
-  declarations: [SymptomsComponent],
+  declarations: [SymptomsComponent, EditSymptomDialogComponent, DeleteSymptomDialogComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatInputModule,
+
+    LoadClickModule
+  ],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'hr-HR'},
   ]
 })
 export class SymptomsModule { }

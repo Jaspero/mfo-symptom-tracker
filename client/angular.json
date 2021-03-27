@@ -229,7 +229,7 @@
               "projects/web/src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/@matheo/datepicker/prebuilt-themes/indigo-pink.css",
               "projects/web/src/styles.scss"
             ],
             "scripts": []

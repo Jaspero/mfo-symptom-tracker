@@ -42,6 +42,12 @@ service cloud.firestore {
         allow read: if admin() || hasId(resource);
         allow write: if admin() || hasId(resource);
       }
+
+      match /symptoms/{symptoms} {
+        allow read: if admin() || hasId(resource);
+        allow create: if admin() || request.auth.uid == request.resource.data.subject;
+        allow update, delete: if admin() || request.auth.uid == resource.data.subject;
+      }
     }
 
     match /modules/{module=**} {

@@ -10,4 +10,5 @@ export class StateService {
   research: Research;
   subject: Subject;
   subjectRef: DocumentReference<Subject>;
+  researchRef: DocumentReference<Research>;
 }

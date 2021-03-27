@@ -30,6 +30,7 @@
     "@jaspero/form-builder": "3.21.0",
     "@jaspero/jmsp-notes": "1.1.0",
     "@jaspero/ng-helpers": "4.3.0",
+    "@matheo/datepicker": "11.2.7",
     "@ngneat/transloco": "2.20.1",
     "@ngneat/until-destroy": "8.0.4",
     "ajv": "7.2.3",

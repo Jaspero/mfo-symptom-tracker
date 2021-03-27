@@ -3,15 +3,17 @@ export const CREATED_ON = {
     active: 'createdOn',
     direction: 'desc'
   },
-  column: (sortable = true, format?: string) => ({
+  column: (
+    sortable = true,
+    label = 'GENERAL.DATE',
+    format = 'dd/MM/yy HH:mm'
+  ) => ({
     key: '/createdOn',
-    label: 'GENERAL.DATE',
+    label,
     pipe: ['date'],
     ...sortable && {sortable: true},
-    ...format && {
-      pipeArguments: {
-        0: [format]
-      }
+    pipeArguments: {
+      0: [format]
     }
   }),
   property: {
