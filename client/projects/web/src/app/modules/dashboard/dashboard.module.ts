@@ -1,16 +1,21 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
-import {MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {RouterModule, Routes} from '@angular/router';
 import {LoadClickModule, SanitizeModule} from '@jaspero/ng-helpers';
+import {HelpDialogComponent} from './components/help-dialog/help-dialog.component';
+import {TermsDialogComponent} from './components/terms-dialog/terms-dialog.component';
 import {DashboardComponent} from './dashboard.component';
 import {DashboardResolver} from './resolvers/dashboard.resolver';
-import { TermsDialogComponent } from './components/terms-dialog/terms-dialog.component';
 
 const routes: Routes = [
   {
@@ -48,22 +53,31 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [DashboardComponent, TermsDialogComponent],
+  declarations: [
+    DashboardComponent,
+    TermsDialogComponent,
+    HelpDialogComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
 
     MatDialogModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
 
     LoadClickModule,
     SanitizeModule
   ],
   providers: [
-    DashboardResolver
+    DashboardResolver,
+    {provide: MAT_DATE_LOCALE, useValue: 'hr-HR'},
   ]
 })
 export class DashboardModule { }

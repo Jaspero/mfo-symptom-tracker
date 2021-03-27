@@ -6,7 +6,7 @@
     <a mat-button routerLink="/announcements" routerLinkActive="active">Objave</a>
   </div>
   <div>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="openHelp()">
       <mat-icon>help</mat-icon>
     </button>
     <button mat-icon-button [matMenuTriggerFor]="menu">

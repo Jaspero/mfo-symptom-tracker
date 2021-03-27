@@ -192,5 +192,38 @@
       "TITLE": "Promijeni Email",
       "DIALOG_TITLE": "Promijeni korisnikovu email adresu"
     }
+  },
+
+  "FU": {
+    "ID": "ID",
+    "LABEL": "Labela",
+    "VALUE": "Vrijednot",
+    "HINT": "Pomoć",
+    "ORGANIZE": "Organiziraj",
+    "PLACEHOLDER": "Primjer",
+    "ADJUST_SIZE": "Podesi Veličinu",
+    "ADD_FIELD": "Dodaj Pitanje",
+    "REQUIRED": "Obavezno",
+    "CHANGE_TYPE": "Promijeni Tip",
+    "EDIT": "Uredi",
+    "REMOVE": "Obriši",
+    "OPTIONS": "Opcije",
+    "SETTINGS": "Postavke",
+    "DEFAULT_PLACEHOLDER": "Trenutno nemate pitanja.",
+    "SIZE": {
+      "DESKTOP": "Desktop",
+      "TABLET": "Tablet",
+      "MOBILE": "Mobitel"
+    },
+    "TYPE": {
+      "checkbox": "Checkbox",
+      "email": "Email",
+      "number": "Broj",
+      "select": "Odabir",
+      "text": "Tekst",
+      "textarea": "Tekst blok",
+      "date": "Datum i vrijeme",
+      "content": "Sadržaj"
+    }
   }
 }

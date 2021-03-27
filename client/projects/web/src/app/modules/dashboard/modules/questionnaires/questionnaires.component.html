@@ -1,1 +1,76 @@
-<p>questionnaires works!</p>
+<mat-card class="m-b-m">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum doloribus eveniet explicabo fugit, inventore laboriosam maxime nisi nobis odit perferendis rem rerum veritatis voluptate? Hic impedit ipsa porro voluptate voluptatem.</p>
+  <p class="m-t-s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid autem dolores, ex explicabo fuga nisi qui repudiandae sed. Amet dolores earum laborum minus nam neque similique totam unde vel!</p>
+</mat-card>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let item of items; index as index;" (opened)="opened(item)">
+    <mat-expansion-panel-header>
+      <div class="flex jc-between w-full ai-center m-r-m">
+        <span>{{item.data.name}}</span>
+
+        <mat-chip-list>
+          <mat-chip
+            selected
+            [color]="item.completed ? 'primary' : 'warn'">
+            {{item.completed ? 'Ispunjeno' : 'Nije ispunjeno'}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <p *ngIf="item.data.description">{{item.data.description}}</p>
+
+      <form *ngIf="form" [formGroup]="form">
+        <ng-container *ngFor="let field of item.data.fields">
+          <ng-container *ngIf="fieldValid(item.data.fields, field)">
+            <ng-container [ngSwitch]="field.type">
+
+              <mat-form-field class="w-full" *ngSwitchCase="'text'">
+                <mat-label>{{field.label}}</mat-label>
+                <input [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
+              </mat-form-field>
+
+              <mat-form-field class="w-full" *ngSwitchCase="'number'">
+                <mat-label>{{field.label}}</mat-label>
+                <input type="number" [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
+              </mat-form-field>
+
+              <mat-form-field class="w-full" *ngSwitchCase="'email'">
+                <mat-label>{{field.label}}</mat-label>
+                <input type="email" [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
+              </mat-form-field>
+
+              <mat-form-field class="w-full" *ngSwitchCase="'textarea'">
+                <mat-label>{{field.label}}</mat-label>
+                <textarea rows="5" [placeholder]="field.placeholder || ''" [formControlName]="field.id"></textarea>
+              </mat-form-field>
+
+              <mat-form-field class="w-full" *ngSwitchCase="'select'">
+                <mat-label>{{field.label}}</mat-label>
+                <mat-select [formControlName]="field.id">
+                  <mat-option *ngFor="let value of (field.added?.options || [])" [value]="value.value" [innerHTML]="value.label | jpSanitize"></mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="w-full" *ngSwitchCase="'date'">
+                <mat-label>{{field.label}}</mat-label>
+                <input matInput [formControlName]="field.id" [matDatepicker]="picker"/>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker [twelveHour]="false" type="datetime" #picker></mat-datepicker>
+              </mat-form-field>
+
+              <div *ngSwitchCase="'content'" [innerHTML]="field.value"></div>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+
+        <mat-action-row>
+          <button mat-stroked-button color="primary" [disabled]="item.completed || form.invalid" [jpLoadClick]="save(item, index)">Snimi</button>
+        </mat-action-row>
+      </form>
+    </ng-template>
+
+  </mat-expansion-panel>
+</mat-accordion>

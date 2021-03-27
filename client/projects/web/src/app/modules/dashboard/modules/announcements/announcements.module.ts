@@ -1,6 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {MatCardModule} from '@angular/material/card';
 import {RouterModule, Routes} from '@angular/router';
+import {SanitizeModule} from '@jaspero/ng-helpers';
 import {AnnouncementsComponent} from './announcements.component';
 
 const routes: Routes = [{
@@ -12,7 +14,11 @@ const routes: Routes = [{
   declarations: [AnnouncementsComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+
+    MatCardModule,
+
+    SanitizeModule
   ]
 })
 export class AnnouncementsModule { }

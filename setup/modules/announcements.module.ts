@@ -2,7 +2,9 @@ import {CREATED_ON} from './shared/created-on';
 
 export const ANNOUNCEMENTS_MODULE = {
   id: 'researches~{docId}~announcements',
+  name: 'Objave',
   authorization: {
+    read: ['admin'],
     write: ['admin']
   },
   layout: {
@@ -24,6 +26,11 @@ export const ANNOUNCEMENTS_MODULE = {
         {
           key: '/title',
           label: 'Naslov'
+        },
+        {
+          key: '/active',
+          label: 'Aktivna',
+          control: true
         }
       ]
     }
@@ -33,6 +40,8 @@ export const ANNOUNCEMENTS_MODULE = {
       id: {type: 'string'},
       title: {type: 'string'},
       content: {type: 'string'},
+      active: {type: 'boolean'},
+      ...CREATED_ON.property
     }
   },
   definitions: {
@@ -40,8 +49,9 @@ export const ANNOUNCEMENTS_MODULE = {
     content: {
       label: 'Sadržaj',
       component: {
-        type: 'fb-tinymce'
+        type: 'tinymce'
       }
-    }
+    },
+    ...CREATED_ON.definition()
   }
 };

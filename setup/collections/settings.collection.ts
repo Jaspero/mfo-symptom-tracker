@@ -27,6 +27,12 @@ export const SETTINGS_COLLECTION = {
             value: '/m/researches/overview'
           },
           {
+            icon: 'help_center',
+            label: 'Upiti ispitanika',
+            type: 'link',
+            value: '/m/help-requests/overview'
+          },
+          {
             children: [
               {
                 icon: 'supervised_user_circle',

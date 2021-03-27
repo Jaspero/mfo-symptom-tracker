@@ -1,0 +1,30 @@
+<h4 mat-dialog-title>Pomoć</h4>
+
+<form [formGroup]="form">
+  <mat-dialog-content>
+
+    <p class="m-b-m">
+      Kako bi ste sačuvali vašu anonimnost. Prilikom predaje upitnika nemojte slati osobne podatke, zato
+      što će isti biti podijeljeni s administratorima.
+    </p>
+
+    <mat-form-field class="w-full">
+      <mat-label>Problem</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="greška">Poteškoča s platformom</mat-option>
+        <mat-option value="upit">Upit/nejasnoča</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Opis</mat-label>
+      <textarea matInput rows="5" formControlName="description"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-stroked-button color="primary" [disabled]="form.invalid" [jpLoadClick]="save()">
+      Snimi
+    </button>
+  </mat-dialog-actions>
+</form>

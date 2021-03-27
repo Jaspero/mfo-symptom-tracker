@@ -34,6 +34,12 @@ service cloud.firestore {
       allow write: if access(database, 'users', 'write') || hasId(resource);
     }
 
+    match /help-requests/{item} {
+      allow read: if access(database, 'help-requests', 'read');
+      allow create: if authenticated();
+      allow update, delete: if access(database, 'help-requests', 'write');
+    }
+
     match /researches/{research} {
       allow read: if access(database, 'research', 'read') || hasId(resource);
       allow write: if access(database, 'research', 'write') || hasId(resource);
@@ -47,6 +53,12 @@ service cloud.firestore {
         allow read: if admin() || hasId(resource);
         allow create: if admin() || request.auth.uid == request.resource.data.subject;
         allow update, delete: if admin() || request.auth.uid == resource.data.subject;
+      }
+
+      match /questionnaires/{questionnaire}/submissions/{submission} {
+        allow read: if admin() || hasId(resource);
+        allow create: if admin() || request.auth.uid == request.resource.id;
+        allow update, delete: if admin();
       }
     }
 

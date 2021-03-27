@@ -1,11 +1,12 @@
 import {CREATED_ON} from './shared/created-on';
+import {FORMAT_SEARCH} from './shared/format-search';
 
 export const QUESTIONNAIRES_MODULE = {
   id: 'researches~{docId}~questionnaires',
   name: 'Upitnici',
   authorization: {
-    write: ['admin'],
-    read: ['subject']
+    read: ['admin'],
+    write: ['admin']
   },
   layout: {
     sort: CREATED_ON.sort,
@@ -13,7 +14,11 @@ export const QUESTIONNAIRES_MODULE = {
       segments: [
         {
           title: 'General',
-          fields: ['/id', '/name', '/description']
+          fields: [
+            '/id',
+            '/name',
+            '/description'
+          ]
         },
         {
           type: 'empty',
@@ -31,15 +36,12 @@ export const QUESTIONNAIRES_MODULE = {
         },
         {
           key: '/name',
-          label: 'Name'
+          label: 'Ime'
         },
         {
-          key: '/id',
-          label: 'Predaje',
-          pipe: ['custom', 'jpSanitize'],
-          pipeArguments: {
-            0: `(id => '<jms-e-link link=/m/forms/' + id + '/submissions >View</jms-e-link>')`
-          }
+          key: '/active',
+          label: 'Aktivni',
+          control: true
         }
       ]
     }
@@ -49,18 +51,31 @@ export const QUESTIONNAIRES_MODULE = {
       id: {type: 'string'},
       name: {type: 'string'},
       description: {type: 'string'},
+      active: {type: 'boolean'},
       fields: {type: 'array'},
       ...CREATED_ON.property,
-    }
+    },
+    required: [
+      'name'
+    ]
   },
   definitions: {
     id: {
       label: 'ID',
       hint: 'Automatski kreirano iz imena ako se ostavi praznim',
-      disableOn: 'edit'
+      disableOn: 'edit',
+      formatOnSave: FORMAT_SEARCH('name')
     },
     name: {label: 'Ime'},
-    description: {label: 'Opis'},
+    description: {
+      label: 'Opis',
+      component: {
+        type: 'textarea',
+        configuration: {
+          rows: 5
+        }
+      }
+    },
     fields: {
       component: {
         type: 'fu-fields'

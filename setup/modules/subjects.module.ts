@@ -1,6 +1,6 @@
 export const SUBJECTS_MODULE = {
   id: 'researches~{docId}~subjects',
-  name: 'Subjekti',
+  name: 'Ispitanici',
   authorization: {
     read: ['admin'],
     write: ['admin']

@@ -1,1 +1,15 @@
-<p>announcements works!</p>
+<mat-card *ngIf="items && !items.length; else hasContent;">
+  <mat-card-content>
+    <p class="ta-center">Trenutno nema obavijesti vezanih za ovo istraživanje.</p>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #hasContent>
+  <mat-card *ngFor="let item of items; first as first;" [class.m-t-m]="!first">
+    <mat-card-header>
+      <mat-card-title>{{item.title}}</mat-card-title>
+      <mat-card-subtitle>{{item.createdOn | date:'dd/MM/yy HH:mm'}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content [innerHTML]="item.content | jpSanitize"></mat-card-content>
+  </mat-card>
+</ng-template>

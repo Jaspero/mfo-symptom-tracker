@@ -5,7 +5,7 @@ export const SYMPTOMS_MODULE = {
   name: 'Simptomi',
   authorization: {
     write: ['admin'],
-    read: ['admins']
+    read: ['admin']
   },
   layout: {
     sort: CREATED_ON.sort,
@@ -23,6 +23,9 @@ export const SYMPTOMS_MODULE = {
         }
       ]
     },
+    overview: {
+      toolbar: []
+    },
     table: {
       hideImport: true,
       tableColumns: [
@@ -36,7 +39,7 @@ export const SYMPTOMS_MODULE = {
           label: 'Kraj',
           pipe: ['date'],
           pipeArguments: {
-            0: 'dd/MM/yy HH:mm'
+            0: ['dd/MM/yy HH:mm']
           }
         },
         {

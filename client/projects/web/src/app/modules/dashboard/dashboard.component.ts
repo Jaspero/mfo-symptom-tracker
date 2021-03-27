@@ -3,6 +3,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {StateService} from '../../services/state.service';
+import {HelpDialogComponent} from './components/help-dialog/help-dialog.component';
 import {TermsDialogComponent} from './components/terms-dialog/terms-dialog.component';
 
 @Component({
@@ -34,6 +35,15 @@ export class DashboardComponent implements OnInit {
         data: {
           hideButton
         }
+      }
+    );
+  }
+
+  openHelp() {
+    this.dialog.open(
+      HelpDialogComponent,
+      {
+        width: '600px'
       }
     );
   }

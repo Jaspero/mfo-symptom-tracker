@@ -53,10 +53,10 @@ export const RESEARCHES_MODULE = {
           value: `v => '<jms-e-link link="/m/researches/{{v.id}}/questionnaires/overview" icon="feed">Upitnici</jms-e-link>'`
         },
         {
-          value: `v => '<jms-e-link link="/m/researches/{{v.id}}/symptoms/overview" icon="campaign">Simptomi</jms-e-link>'`
+          value: `v => '<jms-e-link link="/m/researches/{{v.id}}/symptoms/overview" icon="device_thermostat">Simptomi</jms-e-link>'`
         },
         {
-          value: `v => '<jms-e-link link="/m/researches/{{v.id}}/announcements/overview" icon="device_thermostat">Objave</jms-e-link>'`
+          value: `v => '<jms-e-link link="/m/researches/{{v.id}}/announcements/overview" icon="campaign">Objave</jms-e-link>'`
         }
       ]
     }

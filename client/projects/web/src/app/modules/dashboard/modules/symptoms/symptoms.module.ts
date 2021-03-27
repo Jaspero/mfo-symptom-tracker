@@ -3,13 +3,13 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {RouterModule, Routes} from '@angular/router';
 import {LoadClickModule} from '@jaspero/ng-helpers';
 import {MatDatepickerModule, MatNativeDateModule} from '@matheo/datepicker';
@@ -39,11 +39,9 @@ const routes: Routes = [{
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
+    MatTooltipModule,
 
-    LoadClickModule
-  ],
-  providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'hr-HR'},
+    LoadClickModule,
   ]
 })
 export class SymptomsModule { }

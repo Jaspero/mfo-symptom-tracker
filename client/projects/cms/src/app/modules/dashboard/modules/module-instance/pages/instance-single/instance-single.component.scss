@@ -4,3 +4,14 @@
   left: 0;
   width: 100%;
 }
+
+::ng-deep {
+  fb-fu-fields {
+    .field,
+    .fields-footer {
+      border: 1px solid var(--panel-tertiary);
+      background: white;
+      border-radius: 4px;
+    }
+  }
+}
