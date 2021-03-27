@@ -1,1 +1,26 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <span class="logo">Simptom Traker</span>
+  <div class="links">
+    <a mat-button routerLink="/symptoms" routerLinkActive="active">Simptomi</a>
+    <a mat-button routerLink="/questionnaires" routerLinkActive="active">Upitnici</a>
+    <a mat-button routerLink="/announcements" routerLinkActive="active">Objave</a>
+  </div>
+  <div>
+    <button mat-icon-button>
+      <mat-icon>help</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+        <span>Odjava</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

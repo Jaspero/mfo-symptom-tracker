@@ -34,6 +34,16 @@ service cloud.firestore {
       allow write: if access(database, 'users', 'write') || hasId(resource);
     }
 
+    match /researches/{research} {
+      allow read: if access(database, 'research', 'read') || hasId(resource);
+      allow write: if access(database, 'research', 'write') || hasId(resource);
+
+      match /subjects/{subject} {
+        allow read: if admin() || hasId(resource);
+        allow write: if admin() || hasId(resource);
+      }
+    }
+
     match /modules/{module=**} {
       allow read: if authenticated();
       allow write: if admin();

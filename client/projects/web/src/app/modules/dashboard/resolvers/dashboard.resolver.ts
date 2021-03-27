@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore, DocumentReference} from '@angular/fire/firestore';
 import {Resolve} from '@angular/router';
-import {map, switchMap} from 'rxjs/operators';
+import {map, switchMap, take} from 'rxjs/operators';
 import {Research} from '../../../../../../shared/interfaces/research.interface';
 import {Subject} from '../../../../../../shared/interfaces/subject.interface';
 import {StateService} from '../../../services/state.service';
@@ -18,6 +18,7 @@ export class DashboardResolver implements Resolve<{research: Research, subject: 
   resolve() {
     return this.afa.user
       .pipe(
+        take(1),
         switchMap(user => {
           const [prefix] = user.uid.split('-');
 

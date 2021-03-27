@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {AngularFireAuth} from '@angular/fire/auth';
 import {MatDialog} from '@angular/material/dialog';
+import {Router} from '@angular/router';
 import {StateService} from '../../services/state.service';
 import {TermsDialogComponent} from './components/terms-dialog/terms-dialog.component';
 
@@ -12,7 +14,9 @@ import {TermsDialogComponent} from './components/terms-dialog/terms-dialog.compo
 export class DashboardComponent implements OnInit {
   constructor(
     private state: StateService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private afa: AngularFireAuth,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -27,4 +31,10 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  logOut() {
+    this.afa.signOut()
+      .then(() =>
+        this.router.navigate(['/login'])
+      );
+  }
 }

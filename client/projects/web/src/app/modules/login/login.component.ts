@@ -65,16 +65,16 @@ export class LoginComponent implements OnInit {
 
     this.form = this.fb.group({
       research: ['', Validators.required],
-      id: ['', [Validators.required, Validators.email]],
+      id: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   login() {
     return () =>
-      this.aff.callFunction('cms-login', this.form.getRawValue())
+      this.aff.callFunction('cms-login', this.form.getRawValue(), '')
         .pipe(
-          switchMap(token =>
+          switchMap(({token}) =>
             this.afa.signInWithCustomToken(token)
           )
         );

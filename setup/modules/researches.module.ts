@@ -86,7 +86,7 @@ export const RESEARCHES_MODULE = {
     terms: {
       label: 'Privola',
       component: {
-        type: 'fb-tinymce'
+        type: 'tinymce'
       }
     },
     participants: {label: 'Broj Ispitanika'},

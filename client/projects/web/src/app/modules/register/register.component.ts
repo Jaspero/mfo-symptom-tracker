@@ -88,11 +88,9 @@ export class RegisterComponent implements OnInit {
         'Registracija završena uspješno.'
       )
         .pipe(
-          switchMap(token => {
-            console.log(token);
-
-            return this.afa.signInWithCustomToken(token);
-          })
+          switchMap(({token}) =>
+            this.afa.signInWithCustomToken(token)
+          )
         );
     };
   }

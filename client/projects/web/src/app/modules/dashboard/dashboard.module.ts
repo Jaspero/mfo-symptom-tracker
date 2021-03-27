@@ -2,6 +2,9 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {RouterModule, Routes} from '@angular/router';
 import {LoadClickModule, SanitizeModule} from '@jaspero/ng-helpers';
 import {DashboardComponent} from './dashboard.component';
@@ -12,6 +15,9 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    resolve: {
+      data: DashboardResolver
+    },
     children: [
       {
         path: 'symptoms',
@@ -24,6 +30,17 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules/questionnaires/questionnaires.module')
             .then(m => m.QuestionnairesModule)
+      },
+      {
+        path: 'announcements',
+        loadChildren: () =>
+          import('./modules/announcements/announcements.module')
+            .then(m => m.AnnouncementsModule)
+      },
+      {
+        path: '**',
+        redirectTo: 'symptoms',
+        pathMatch: 'full'
       }
     ]
   }
@@ -37,6 +54,9 @@ const routes: Routes = [
 
     MatDialogModule,
     MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
 
     LoadClickModule,
     SanitizeModule

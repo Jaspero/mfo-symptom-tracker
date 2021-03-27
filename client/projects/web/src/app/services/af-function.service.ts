@@ -26,7 +26,7 @@ export class AfFunctionService {
 
           return of(res as T);
         }),
-        notify(success && {success})
+        notify({success})
       );
   }
 }

@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'mfo-questionnaires',
-  templateUrl: './questionnaires.component.html',
-  styleUrls: ['./questionnaires.component.scss'],
+  selector: 'mfo-announcements',
+  templateUrl: './announcements.component.html',
+  styleUrls: ['./announcements.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuestionnairesComponent implements OnInit {
+export class AnnouncementsComponent implements OnInit {
 
   constructor() { }
 
