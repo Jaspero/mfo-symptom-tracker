@@ -5,8 +5,6 @@ import {AutoFocusDirective} from './auto-focus.directive';
 @NgModule({
   declarations: [AutoFocusDirective],
   exports: [AutoFocusDirective],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule]
 })
 export class AutoFocusModule { }

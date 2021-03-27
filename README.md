@@ -1,10 +1,3 @@
-![Deploy Admin](https://github.com/Jaspero/mfo-symptop-tracker/workflows/Deploy%20CMS/badge.svg)
-![Deploy Web](https://github.com/Jaspero/mfo-symptop-tracker/workflows/Deploy%20Web/badge.svg)
-![Deploy Functions](https://github.com/Jaspero/mfo-symptop-tracker/workflows/Deploy%20Functions/badge.svg)
-![Deploy Firestore Indexes](https://github.com/Jaspero/mfo-symptop-tracker/workflows/Deploy%20Firestore%20Indexes/badge.svg)
-![Deploy Storage Rules](https://github.com/Jaspero/mfo-symptop-tracker/workflows/Deploy%20Storage%20Rules/badge.svg)
-![Deploy Rules](https://github.com/Jaspero/mfo-symptop-tracker/workflows/Deploy%20Rules/badge.svg)
-
 # MFO Symptom Tracker
 This is the full source code for the [Symptom Tracker webapp](https://genos-glyco.com/).
 The app is built in [Angular](https://github.com/angular) and the database and hosting is on [Firebase](https://firebase.google.com/). 
