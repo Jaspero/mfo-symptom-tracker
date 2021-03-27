@@ -7,18 +7,6 @@ const redirectLoggedInToDashboard = () => redirectLoggedInTo(['/dashboard']);
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () =>
-      import('./modules/dashboard/dashboard.module')
-        .then(m => m.DashboardModule),
-    canActivate: [
-      AngularFireAuthGuard,
-    ],
-    data: {
-      authGuardPipe: redirectUnauthorized
-    }
-  },
-  {
     path: 'login',
     loadChildren: () =>
       import('./modules/login/login.module')
@@ -43,6 +31,18 @@ const routes: Routes = [
     },
   },
   {
+    path: '',
+    loadChildren: () =>
+      import('./modules/dashboard/dashboard.module')
+        .then(m => m.DashboardModule),
+    canActivate: [
+      AngularFireAuthGuard,
+    ],
+    data: {
+      authGuardPipe: redirectUnauthorized
+    }
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
@@ -50,7 +50,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

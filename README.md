@@ -11,6 +11,11 @@ The app is built in [Angular](https://github.com/angular) and the database and h
 
 Content management is done through [JMS](https://github.com/Jaspero/jms) our open source content management system. 
 
+| Application | Link |
+| ---- | ---- |
+| Web | https://mfo-symptom-tracker.web.app/ |
+| Admin | https://mfo-symptom-tracker-cms.web.app/ |
+
 ## Why is this open source 
 
 Jaspero benefits greatly from the open source community. This app in its entirety is made possible because of open source software. Because of this we try to open source as many of our projects as we can. 
