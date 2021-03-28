@@ -27,9 +27,8 @@ jobs:
       - name: Install Dependencies
         if: ${{ steps.changes.outputs.CHANGES }}
         run: |
-          npm ci
           npm install firebase-tools
-          npm --prefix functions ci
+          npm --prefix functions i
           npm --prefix functions run build
       - name: Set project
         if: ${{ steps.changes.outputs.CHANGES }}

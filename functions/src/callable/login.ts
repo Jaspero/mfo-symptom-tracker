@@ -20,9 +20,7 @@ export const login = functions
 
 
     if (!researchDoc.exists || !rData.active) {
-      return {
-        error: 'Odabrano istraživanje ne postoji ili nije aktivno.'
-      }
+      return {error: 'Odabrano istraživanje ne postoji ili nije aktivno.'}
     }
 
     const uId = `${rData.prefix}-${id}`;
@@ -33,17 +31,13 @@ export const login = functions
     }
 
     if (!(subjectDoc.data() as any).assigned) {
-      return {
-        error: 'Ovaj identifikator još nije aktiviran. Morate se prvo registrirati.'
-      }
+      return {error: 'Ovaj identifikator još nije aktiviran. Morate se prvo registrirati.'}
     }
 
     const secrets = await subjectDoc.ref.collection('added').doc('secrets').get();
 
     if (!secrets.exists) {
-      return {
-        error: 'Nešto nije uredu s vašim računom. Molim kontaktirajte administratora.'
-      }
+      return {error: 'Nešto nije uredu s vašim računom. Molim kontaktirajte administratora.'}
     }
 
     const {password: hashedPassword} = secrets.data() as any;
