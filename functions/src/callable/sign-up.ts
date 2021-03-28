@@ -32,13 +32,8 @@ export const signUp = functions
     const pw = await hash(password, 10);
 
     await Promise.all([
-      subjectDoc.ref.collection('added').doc('secrets').set({
-        password: pw
-      }),
-      subjectDoc.ref.update({
-        assigned: true,
-        assignedOn: Date.now()
-      })
+      subjectDoc.ref.collection('added').doc('secrets').set({password: pw}),
+      subjectDoc.ref.update({assigned: true, assignedOn: Date.now()})
     ]);
 
     const token = await auth().createCustomToken(uId, {research});

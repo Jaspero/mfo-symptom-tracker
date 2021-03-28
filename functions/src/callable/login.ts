@@ -29,9 +29,7 @@ export const login = functions
     const subjectDoc = await researchDoc.ref.collection('subjects').doc(uId).get();
 
     if (!subjectDoc.exists) {
-      return {
-        error: 'Vaš identifikator nije ispravan.'
-      }
+      return {error: 'Vaš identifikator nije ispravan.'}
     }
 
     if (!(subjectDoc.data() as any).assigned) {

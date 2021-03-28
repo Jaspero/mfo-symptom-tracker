@@ -26,15 +26,13 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  openTerms(hideButton = false) {
+  openTerms(firstLoad = true) {
     this.dialog.open(
       TermsDialogComponent,
       {
         width: '800px',
-        disableClose: !hideButton,
-        data: {
-          hideButton
-        }
+        disableClose: firstLoad,
+        data: firstLoad
       }
     );
   }

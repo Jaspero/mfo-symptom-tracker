@@ -14,9 +14,9 @@ export class TermsDialogComponent {
   constructor(
     public state: StateService,
     @Inject(MAT_DIALOG_DATA)
-    public hideButton: boolean,
+    public firstLoad: boolean,
     private dialogRef: MatDialogRef<TermsDialogComponent>
-  ) { }
+  ) {}
 
   accept() {
     return () =>
