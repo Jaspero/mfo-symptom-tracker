@@ -12,9 +12,7 @@ export const login = functions
     const {password, id, research} = data;
 
     if (!password || !id || !research) {
-      return {
-        error: 'Nedostaje neki od obveznih parametara.'
-      };
+      return {error: 'Nedostaje neki od obveznih parametara.'};
     }
 
     const researchDoc = await fs.doc(`researches/${research}`).get();

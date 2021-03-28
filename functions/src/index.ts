@@ -1,4 +1,4 @@
-import {initializeApp} from 'firebase-admin';
+import {credential, initializeApp} from 'firebase-admin';
 import {createUser} from './callable/create-user';
 import {getUser} from './callable/get-user';
 import {login} from './callable/login';
@@ -19,12 +19,12 @@ import {userDeleted} from './triggers/user-deleted';
 import {userDocumentUpdated} from './triggers/user-document-updated';
 
 // Needed for working sign blob locally
-// initializeApp({
-//   credential: credential.cert(require('../serviceAccountKey.json')),
-//   databaseURL: 'https://mfo-symptom-tracker.firebaseio.com'
-// });
+initializeApp({
+  credential: credential.cert(require('../serviceAccountKey.json')),
+  databaseURL: 'https://mfo-symptom-tracker.firebaseio.com'
+});
 
-initializeApp();
+// initializeApp();
 
 export const cms = {
   // Triggers

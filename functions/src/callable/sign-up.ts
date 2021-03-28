@@ -12,27 +12,21 @@ export const signUp = functions
     const {password, id, research} = data;
 
     if (!password || !id || !research) {
-      return {
-        error: 'Nedostaje neki od obveznih parametara.'
-      };
+      return {error: 'Nedostaje neki od obveznih parametara.'};
     }
 
     const researchDoc = await fs.doc(`researches/${research}`).get();
     const rData = (researchDoc.data() as any);
 
     if (!researchDoc.exists || !rData.active) {
-      return {
-        error: 'Odabrano istraživanje nije pronađeno.'
-      }
+      return {error: 'Odabrano istraživanje nije pronađeno.'}
     }
 
     const uId = `${rData.prefix}-${id}`;
     const subjectDoc = await researchDoc.ref.collection('subjects').doc(uId).get();
 
     if (!subjectDoc.exists || (subjectDoc.data() as any).assigned) {
-      return {
-        error: 'Vaš identifikator nije ispravan.'
-      }
+      return {error: 'Vaš identifikator nije ispravan.'}
     }
 
     const pw = await hash(password, 10);
