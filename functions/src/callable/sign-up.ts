@@ -26,7 +26,7 @@ export const signUp = functions
     const subjectDoc = await researchDoc.ref.collection('subjects').doc(uId).get();
 
     if (!subjectDoc.exists || (subjectDoc.data() as any).assigned) {
-      return {error: 'Vaš identifikator nije ispravan.'}
+      return {error: 'Vaš identifikator nije ispravan. Provjerite velika/mala slova te jeste li izabrali pravo istraživanje.'}
     }
 
     const pw = await hash(password, 10);

@@ -45,9 +45,7 @@ export const login = functions
     const result = await compare(password, hashedPassword);
 
     if (!result) {
-      return {
-        error: 'Neispravna lozinka. Ukoliko ste zaboravili lozinku molim vas kontaktirajte administratora.'
-      }
+      return {error: 'Neispravna lozinka. Ukoliko ste zaboravili lozinku molim vas kontaktirajte administratora.'}
     }
 
     const token = await auth().createCustomToken(uId, {research});
