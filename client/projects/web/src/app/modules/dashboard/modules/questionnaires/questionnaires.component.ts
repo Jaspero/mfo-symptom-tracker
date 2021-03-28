@@ -40,7 +40,7 @@ export class QuestionnairesComponent implements OnInit {
     from(
       this.state.researchRef.collection('questionnaires')
         .where('active', '==', true)
-        .orderBy('createdOn', 'desc')
+        .orderBy('createdOn', 'asc')
         .get()
     )
       .pipe(
@@ -89,10 +89,6 @@ export class QuestionnairesComponent implements OnInit {
         return acc;
       }, {})
     );
-
-    if (it.completed) {
-      this.form.disable();
-    }
   }
 
   fieldValid(fields: any[], field: any) {

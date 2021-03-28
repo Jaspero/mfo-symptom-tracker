@@ -1,6 +1,7 @@
 <mat-card class="m-b-m">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum doloribus eveniet explicabo fugit, inventore laboriosam maxime nisi nobis odit perferendis rem rerum veritatis voluptate? Hic impedit ipsa porro voluptate voluptatem.</p>
-  <p class="m-t-s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid autem dolores, ex explicabo fuga nisi qui repudiandae sed. Amet dolores earum laborum minus nam neque similique totam unde vel!</p>
+  <p>U svrhu istraživanja pripremili smo niz upitnika, oni će nam omogućiti bolju analizu rezultata.</p>
+  <p class="m-t-s">Upitnici su kompaktni, ispunjavaju se samo jednom i njihovo ispunjavanje traje 5 minuta.</p>
+  <p class="m-t-s">Za vrijeme trajanja istraživanja pojaviti će se novi upitnici. O njihovom pojavljivanju biti će te obaviješteni naknadno.</p>
 </mat-card>
 
 <mat-accordion>
@@ -20,7 +21,7 @@
     </mat-expansion-panel-header>
 
     <ng-template matExpansionPanelContent>
-      <p *ngIf="item.data.description">{{item.data.description}}</p>
+      <p class="m-b-m" *ngIf="item.data.description">{{item.data.description}}</p>
 
       <form *ngIf="form" [formGroup]="form">
         <ng-container *ngFor="let field of item.data.fields">
@@ -29,17 +30,17 @@
 
               <mat-form-field class="w-full" *ngSwitchCase="'text'">
                 <mat-label>{{field.label}}</mat-label>
-                <input [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
+                <input matInput [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
               </mat-form-field>
 
               <mat-form-field class="w-full" *ngSwitchCase="'number'">
                 <mat-label>{{field.label}}</mat-label>
-                <input type="number" [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
+                <input matInput type="number" [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
               </mat-form-field>
 
               <mat-form-field class="w-full" *ngSwitchCase="'email'">
                 <mat-label>{{field.label}}</mat-label>
-                <input type="email" [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
+                <input matInput type="email" [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
               </mat-form-field>
 
               <mat-form-field class="w-full" *ngSwitchCase="'textarea'">

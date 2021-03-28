@@ -33,11 +33,11 @@ export const SUBJECTS_MODULE = {
           }
         },
         {
-          key: '/terms',
+          key: '/termsAcceptedOn',
           label: 'Privola',
-          pipe: ['custom'],
+          pipe: ['date'],
           pipeArguments: {
-            0: `v => v ? 'Da' : 'Ne'`
+            0: ['dd/MM/yy HH:mm']
           }
         }
       ]

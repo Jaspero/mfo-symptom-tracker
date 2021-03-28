@@ -22,13 +22,20 @@
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker [twelveHour]="false" type="datetime" #picker2></mat-datepicker>
     </mat-form-field>
-    <mat-form-field class="w-full">
-      <mat-label>Intenzitet</mat-label>
-      <mat-select formControlName="intensity">
-        <mat-option *ngFor="let item of intensity" [value]="item">{{item}}</mat-option>
-      </mat-select>
-      <mat-hint>1 je najniža razina boli a 5 je najviša.</mat-hint>
+    <mat-form-field class="w-full" *ngIf="form.get('type').value === 'Temperatura'; else regIntensity;">
+      <mat-label>Temperatura u celzijusima</mat-label>
+      <input type="number" matInput formControlName="intensity">
     </mat-form-field>
+    <ng-template #regIntensity>
+      <mat-form-field class="w-full">
+        <mat-label>Intenzitet</mat-label>
+        <mat-select formControlName="intensity">
+          <mat-option *ngFor="let item of intensity" [value]="item">{{item}}</mat-option>
+        </mat-select>
+        <mat-hint>1 je najniža razina boli a 5 je najviša.</mat-hint>
+      </mat-form-field>
+    </ng-template>
+
     <mat-form-field class="w-full">
       <mat-label>Opis</mat-label>
       <textarea matInput formControlName="description" rows="10"></textarea>

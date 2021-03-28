@@ -28,6 +28,7 @@ export class EditSymptomDialogComponent implements OnInit {
 
   form: FormGroup;
   types = [
+    'Temperatura',
     'Bol na mjestu uboda',
     'Oteklina na mjestu uboda',
     'Crvenilo na mjestu uboda',
