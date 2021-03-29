@@ -10,7 +10,8 @@ export const SUBJECTS_MODULE = {
       segments: [{
         fields: [
           '/id',
-          '/assigned'
+          '/assigned',
+          '/issued'
         ]
       }]
     },
@@ -25,8 +26,13 @@ export const SUBJECTS_MODULE = {
           label: 'ID'
         },
         {
+          key: '/issued',
+          label: 'Izdan',
+          control: true
+        },
+        {
           key: '/assigned',
-          label: 'Dodijeljen',
+          label: 'Registriran',
           pipe: ['custom'],
           pipeArguments: {
             0: `v => v ? 'Da' : 'Ne'`
@@ -50,7 +56,7 @@ export const SUBJECTS_MODULE = {
           key: 'assigned',
           operator: '==',
           value: false,
-          label: 'Dodijeljen'
+          label: 'Registriran'
         }
       ],
       segments: [{type: 'empty', fields: ['/assigned']}],
@@ -61,8 +67,8 @@ export const SUBJECTS_MODULE = {
       },
       definitions: {
         assigned: {
-          label: 'Dodijeljen',
-          filterLabel: 'Dodijeljen'
+          label: 'Registriran',
+          filterLabel: 'Registriran'
         }
       }
     }
@@ -71,6 +77,7 @@ export const SUBJECTS_MODULE = {
     properties: {
       id: {type: 'string'},
       assigned: {type: 'boolean'},
+      issued: {type: 'boolean'},
       assignedOn: {type: 'number'},
       termsAccepted: {type: 'boolean'},
       termsAcceptedOn: {type: 'number'}
@@ -78,6 +85,7 @@ export const SUBJECTS_MODULE = {
   },
   definitions: {
     id: {label: 'ID'},
-    assigned: {label: 'Dodijeljen'}
+    assigned: {label: 'Registriran'},
+    issued: {label: 'Izdan'},
   }
 };
