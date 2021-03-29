@@ -28,7 +28,8 @@ export class QuestionnairesComponent implements OnInit {
     private state: StateService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder
-  ) { }
+  ) {
+  }
 
   @ViewChild(MatAccordion, {static: true})
   accordion: MatAccordion;
@@ -71,12 +72,13 @@ export class QuestionnairesComponent implements OnInit {
   opened(it: Item) {
     this.form = this.fb.group(
       it.data.fields.reduce((acc, cur) => {
-
         if (cur.type !== 'content') {
           acc[cur.id] = [
             it.completed && it.completed.hasOwnProperty(cur.id) ?
               cur.type === 'date' ?
-                new Date(it.completed[cur.id]) :
+                it.completed[cur.id] instanceof Date ?
+                  it.completed[cur.id] :
+                  new Date(it.completed[cur.id].seconds * 1000) :
                 it.completed[cur.id] :
               (cur.type === 'checkbox' ? [] : ''),
             [
