@@ -17,6 +17,7 @@ enum Type {
 }
 
 const app = express();
+
 app.use(CORS);
 
 app.post('/:module', authenticated(), (req, res) => {
