@@ -104,11 +104,10 @@ export class ColumnPipe implements PipeTransform {
 
     for (const index of Object.keys(args)) {
       const value = args[index] || '';
-
       if (Array.isArray(value)) {
-        args[index] = value.forEach(arg => this.formatArgument(arg));
+        final[index] = value.map(arg => this.formatArgument(arg));
       } else {
-        args[index] = this.formatArgument(value);
+        final[index] = this.formatArgument(value);
       }
     }
 
