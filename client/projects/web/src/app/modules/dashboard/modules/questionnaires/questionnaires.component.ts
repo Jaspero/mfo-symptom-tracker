@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {DocumentReference} from '@angular/fire/firestore';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatCheckboxChange} from '@angular/material/checkbox';
 import {MatAccordion} from '@angular/material/expansion';
 import {UntilDestroy} from '@ngneat/until-destroy';
 import {forkJoin, from} from 'rxjs';
@@ -147,5 +148,19 @@ export class QuestionnairesComponent implements OnInit {
           })
         );
     };
+  }
+
+  onCheckboxChange(event: MatCheckboxChange, id: string) {
+
+    const control = this.form.get(id);
+    const value = event.source.value;
+
+    if (event.checked) {
+      control.value.push(value);
+    } else {
+      control.value.splice(control.value.indexOf(value), 1);
+    }
+
+    control.setValue(control.value);
   }
 }
