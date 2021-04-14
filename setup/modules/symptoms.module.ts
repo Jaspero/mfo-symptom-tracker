@@ -49,6 +49,11 @@ export const SYMPTOMS_MODULE = {
         {
           key: '/intensity',
           label: 'Intenzitet'
+        },
+        {
+          key: '/description',
+          label: 'Description',
+          pipe: ['ellipsis'],
         }
       ]
     }
