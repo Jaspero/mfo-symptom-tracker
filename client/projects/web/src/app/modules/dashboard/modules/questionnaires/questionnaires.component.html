@@ -1,7 +1,8 @@
 <mat-card class="m-b-m">
   <p>U svrhu istraživanja pripremili smo niz upitnika, oni će nam omogućiti bolju analizu rezultata.</p>
   <p class="m-t-s">Upitnici su kompaktni, ispunjavaju se samo jednom i njihovo ispunjavanje traje 5 minuta.</p>
-  <p class="m-t-s">Za vrijeme trajanja istraživanja pojaviti će se novi upitnici. O njihovom pojavljivanju biti će te obaviješteni naknadno.</p>
+  <p class="m-t-s">Za vrijeme trajanja istraživanja pojaviti će se novi upitnici. O njihovom pojavljivanju biti će te
+    obaviješteni naknadno.</p>
 </mat-card>
 
 <mat-accordion>
@@ -30,17 +31,17 @@
 
               <mat-form-field class="w-full" *ngSwitchCase="'text'">
                 <mat-label>{{field.label}}</mat-label>
-                <input matInput [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
+                <input matInput [placeholder]="field.placeholder || ''" [formControlName]="field.id"/>
               </mat-form-field>
 
               <mat-form-field class="w-full" *ngSwitchCase="'number'">
                 <mat-label>{{field.label}}</mat-label>
-                <input matInput type="number" [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
+                <input matInput type="number" [placeholder]="field.placeholder || ''" [formControlName]="field.id"/>
               </mat-form-field>
 
               <mat-form-field class="w-full" *ngSwitchCase="'email'">
                 <mat-label>{{field.label}}</mat-label>
-                <input matInput type="email" [placeholder]="field.placeholder || ''" [formControlName]="field.id" />
+                <input matInput type="email" [placeholder]="field.placeholder || ''" [formControlName]="field.id"/>
               </mat-form-field>
 
               <mat-form-field class="w-full" *ngSwitchCase="'textarea'">
@@ -48,10 +49,26 @@
                 <textarea rows="5" [placeholder]="field.placeholder || ''" [formControlName]="field.id"></textarea>
               </mat-form-field>
 
+              <div class="m-b-s" *ngSwitchCase="'checkbox'">
+                <p>{{field.label}}</p>
+                <div class="m-t-s" *ngFor="let value of (field.added?.options || [])">
+                  <mat-checkbox
+                    [value]="value.value"
+                    [checked]="form.get(field.id).value.includes(value.value)"
+                    (change)="onCheckboxChange($event, field.id)">
+                    <div [innerHTML]="value.label"></div>
+                  </mat-checkbox>
+                </div>
+              </div>
+
               <mat-form-field class="w-full" *ngSwitchCase="'select'">
                 <mat-label>{{field.label}}</mat-label>
                 <mat-select [formControlName]="field.id">
-                  <mat-option *ngFor="let value of (field.added?.options || [])" [value]="value.value" [innerHTML]="value.label | jpSanitize"></mat-option>
+                  <mat-option
+                    *ngFor="let value of (field.added?.options || [])"
+                    [value]="value.value"
+                    [innerHTML]="value.label | jpSanitize">
+                  </mat-option>
                 </mat-select>
               </mat-form-field>
 
@@ -68,7 +85,8 @@
         </ng-container>
 
         <mat-action-row>
-          <button mat-stroked-button color="primary" [disabled]="item.completed || form.invalid" [jpLoadClick]="save(item, index)">Snimi</button>
+          <button mat-stroked-button color="primary" [disabled]="form.invalid" [jpLoadClick]="save(item, index)">Snimi
+          </button>
         </mat-action-row>
       </form>
     </ng-template>

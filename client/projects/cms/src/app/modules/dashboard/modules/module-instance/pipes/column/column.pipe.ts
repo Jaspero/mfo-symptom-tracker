@@ -8,13 +8,7 @@ import {
   TitleCasePipe,
   UpperCasePipe
 } from '@angular/common';
-import {
-  ChangeDetectorRef,
-  Inject,
-  Optional,
-  Pipe,
-  PipeTransform
-} from '@angular/core';
+import {ChangeDetectorRef, Inject, Optional, Pipe, PipeTransform} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {safeEval} from '@jaspero/form-builder';
 import {SanitizePipe} from '@jaspero/ng-helpers';
@@ -31,6 +25,10 @@ import {MathPipe} from '../../../../../../shared/pipes/math/math-pipe.';
 import {DbService} from '../../../../../../shared/services/db/db.service';
 import {InstanceOverviewContextService} from '../../services/instance-overview-context.service';
 import {EllipsisPipe} from '../ellipsis/ellipsis.pipe';
+
+interface Args {
+  [key: string]: any;
+}
 
 @Pipe({
   name: 'column'
@@ -78,11 +76,15 @@ export class ColumnPipe implements PipeTransform {
   transform(
     value: any,
     pipeTypes: PipeType | PipeType[],
-    allArgs: any[] | {[key: string]: any},
+    allArgs: Args,
     row: any
   ): any {
     if (!pipeTypes) {
       return value;
+    }
+
+    if (allArgs) {
+      allArgs = this.formatArguments(allArgs);
     }
 
     if (Array.isArray(pipeTypes)) {
@@ -94,6 +96,35 @@ export class ColumnPipe implements PipeTransform {
     } else {
       return this.executePipeTransform(pipeTypes, value, allArgs, row);
     }
+  }
+
+  private formatArguments(args: Args) {
+
+    const final = {};
+
+    for (const index of Object.keys(args)) {
+      const value = args[index] || '';
+      if (Array.isArray(value)) {
+        final[index] = value.map(arg => this.formatArgument(arg));
+      } else {
+        final[index] = this.formatArgument(value);
+      }
+    }
+
+    return final;
+  }
+
+  private formatArgument(value: any) {
+
+    if (typeof value !== 'string') {
+      return value;
+    }
+
+    return (value.match(/{{\s*[\w.]+\s*}}/g) || [])
+      .reduce((acc, cur) =>
+        cur ? acc.replace(cur, `' + ${cur.slice(2, -2)} + '`) : acc,
+        value
+      );
   }
 
   private executePipeTransform(type, val, args, row) {
@@ -155,7 +186,8 @@ export class ColumnPipe implements PipeTransform {
 
         try {
           response = method(val, row);
-        } catch (e) {}
+        } catch (e) {
+        }
 
         return response;
     }

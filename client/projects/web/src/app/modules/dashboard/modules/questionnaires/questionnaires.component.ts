@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {DocumentReference} from '@angular/fire/firestore';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatCheckboxChange} from '@angular/material/checkbox';
 import {MatAccordion} from '@angular/material/expansion';
 import {UntilDestroy} from '@ngneat/until-destroy';
 import {forkJoin, from} from 'rxjs';
@@ -28,7 +29,8 @@ export class QuestionnairesComponent implements OnInit {
     private state: StateService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder
-  ) { }
+  ) {
+  }
 
   @ViewChild(MatAccordion, {static: true})
   accordion: MatAccordion;
@@ -71,12 +73,13 @@ export class QuestionnairesComponent implements OnInit {
   opened(it: Item) {
     this.form = this.fb.group(
       it.data.fields.reduce((acc, cur) => {
-
         if (cur.type !== 'content') {
           acc[cur.id] = [
             it.completed && it.completed.hasOwnProperty(cur.id) ?
               cur.type === 'date' ?
-                new Date(it.completed[cur.id]) :
+                it.completed[cur.id] instanceof Date ?
+                  it.completed[cur.id] :
+                  new Date(it.completed[cur.id].seconds * 1000) :
                 it.completed[cur.id] :
               (cur.type === 'checkbox' ? [] : ''),
             [
@@ -145,5 +148,19 @@ export class QuestionnairesComponent implements OnInit {
           })
         );
     };
+  }
+
+  onCheckboxChange(event: MatCheckboxChange, id: string) {
+
+    const control = this.form.get(id);
+    const value = event.source.value;
+
+    if (event.checked) {
+      control.value.push(value);
+    } else {
+      control.value.splice(control.value.indexOf(value), 1);
+    }
+
+    control.setValue(control.value);
   }
 }

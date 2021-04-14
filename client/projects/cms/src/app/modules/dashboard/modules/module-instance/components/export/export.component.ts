@@ -36,6 +36,7 @@ export class ExportComponent {
       filterValue?: any;
       sort?: InstanceSort;
       collection: string;
+      subCollection?: string;
       columns?: ModuleLayoutTableColumn[];
       ids?: string[];
     },
@@ -108,10 +109,18 @@ export class ExportComponent {
           switchMap(token =>
             this.http
               .post(
-                this.db.url('cms-exportData/' + this.data.collection),
+                this.db.url(
+                  'cms-exportData/' + (
+                    this.data.subCollection ?
+                      this.data.subCollection
+                        .replace(/\//g, '~') :
+                      this.data.collection
+                  )
+                ),
                 {
                   type,
                   ...columns && {columns},
+                  ...this.data.subCollection && {collectionRef: this.data.collection},
                   ...skip && {skip},
                   ...limit && {limit},
                   ...useFilters && {filters: this.data.filterValue},
