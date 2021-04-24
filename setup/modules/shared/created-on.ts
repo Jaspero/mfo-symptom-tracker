@@ -27,7 +27,6 @@ export const CREATED_ON = {
     [id]: {
       label,
       ...createInitially && {
-        disableOn: 'edit',
         formatOnLoad: '(value) => value || Date.now()',
       },
       component: {

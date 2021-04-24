@@ -71,22 +71,18 @@ export const SYMPTOMS_MODULE = {
   },
   definitions: {
     subject: {
-      label: 'Subjekt',
-      disableOn: 'edit'
+      label: 'Subjekt'
     },
     type: {
-      label: 'Tip',
-      disableOn: 'edit'
+      label: 'Tip'
     },
     ...CREATED_ON.definition('createdOn', 'Početak'),
     ...CREATED_ON.definition('endedOn', 'Kraj'),
     intensity: {
-      label: 'Intenzitet',
-      disableOn: 'edit'
+      label: 'Intenzitet'
     },
     description: {
       label: 'Dodatni opis',
-      disableOn: 'edit',
       component: {
         type: 'textarea',
         configuration: {
