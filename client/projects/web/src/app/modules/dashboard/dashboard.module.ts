@@ -44,6 +44,12 @@ const routes: Routes = [
             .then(m => m.AnnouncementsModule)
       },
       {
+        path: 'results',
+        loadChildren: () =>
+          import('./modules/results/results.module')
+            .then(m => m.ResultsModule)
+      },
+      {
         path: '**',
         redirectTo: 'symptoms',
         pathMatch: 'full'
