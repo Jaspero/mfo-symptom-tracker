@@ -7,13 +7,23 @@ export const SUBJECTS_MODULE = {
   },
   layout: {
     instance: {
-      segments: [{
-        fields: [
-          '/id',
-          '/assigned',
-          '/issued'
-        ]
-      }]
+      segments: [
+        {
+          fields: [
+            '/id',
+            '/assigned',
+            '/issued'
+          ]
+        },
+        {
+          title: 'Rezultati',
+          array: '/results',
+          fields: [
+            '/date',
+            '/content'
+          ]
+        }
+      ]
     },
     overview: {
       toolbar: []
@@ -80,12 +90,41 @@ export const SUBJECTS_MODULE = {
       issued: {type: 'boolean'},
       assignedOn: {type: 'number'},
       termsAccepted: {type: 'boolean'},
-      termsAcceptedOn: {type: 'number'}
+      termsAcceptedOn: {type: 'number'},
+      results: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            date: {type: 'number'},
+            content: {type: 'string'}
+          }
+        }
+      }
     }
   },
   definitions: {
     id: {label: 'ID'},
     assigned: {label: 'Registriran'},
     issued: {label: 'Izdan'},
+    'results/content': {
+      label: 'Opis rezultata',
+      component: {
+        type: 'tinymce'
+      }
+    },
+    'results/date': {
+      label: 'Datum rezultata',
+      formatOnLoad: '(value) => value || Date.now()',
+      component: {
+        type: 'date',
+        configuration: {
+          includeTime: true,
+          labelHours: 'GENERAL.HOURS',
+          labelMinutes: 'GENERAL.MINUTES',
+          format: 'number'
+        }
+      }
+    }
   }
 };
