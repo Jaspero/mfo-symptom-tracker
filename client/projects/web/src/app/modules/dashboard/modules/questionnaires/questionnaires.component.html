@@ -46,7 +46,7 @@
 
               <mat-form-field class="w-full" *ngSwitchCase="'textarea'">
                 <mat-label>{{field.label}}</mat-label>
-                <textarea rows="5" [placeholder]="field.placeholder || ''" [formControlName]="field.id"></textarea>
+                <textarea matInput rows="5" [placeholder]="field.placeholder || ''" [formControlName]="field.id"></textarea>
               </mat-form-field>
 
               <div class="m-b-s" *ngSwitchCase="'checkbox'">
